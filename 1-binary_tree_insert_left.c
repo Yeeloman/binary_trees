@@ -33,20 +33,21 @@ binary_tree_t *binary_tree_node_withoutreset(binary_tree_t *parent, int value)
  *is NULL
  */
 
-binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value) {
-  binary_tree_t *tmp;
+binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
+{
+	binary_tree_t *tmp;
 
-  if (!parent)
-    return (NULL);
+	if (!parent)
+		return (NULL);
 
-  tmp = malloc(sizeof(struct binary_tree_s));
-  if (!tmp)
-    return (NULL);
-  tmp->left = parent->left;
-  parent->left = binary_tree_node(parent, value);
-  if (tmp->left)
-    parent->left->left =
-        binary_tree_node_withoutreset(parent->left, tmp->left->n);
-  free(tmp);
-  return (parent);
+	tmp = malloc(sizeof(struct binary_tree_s));
+	if (!tmp)
+		return (NULL);
+	tmp->left = parent->left;
+	parent->left = binary_tree_node(parent, value);
+	if (tmp->left)
+		parent->left->left =
+			binary_tree_node_withoutreset(parent->left, tmp->left->n);
+	free(tmp);
+	return (parent);
 }
