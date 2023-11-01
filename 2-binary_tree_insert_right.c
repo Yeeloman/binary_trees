@@ -21,7 +21,6 @@ if (!new)
 return (NULL);
 new->parent = parent;
 new->n = value;
-new->left = NULL;
 new->right = parent->right;
 if (parent->right)
 {
