@@ -10,18 +10,45 @@
  * @left: Pointer to the left child node
  * @right: Pointer to the right child node
  */
-struct binary_tree_s {
-  int n;
-  struct binary_tree_s *parent;
-  struct binary_tree_s *left;
-  struct binary_tree_s *right;
+struct binary_tree_s
+{
+	int n;
+	struct binary_tree_s *parent;
+	struct binary_tree_s *left;
+	struct binary_tree_s *right;
 };
+
 
 typedef struct binary_tree_s binary_tree_t;
 
 typedef struct binary_tree_s bst_t;
 typedef struct binary_tree_s avl_t;
 typedef struct binary_tree_s heap_t;
+
+
+/**
+ * struct  QueueNode - queue node
+ *
+ * @node: binarytree struct
+ * @next: Pointer to the next node
+ */
+typedef struct QueueNode
+{
+	binary_tree_t *node;
+	struct QueueNode *next;
+} QueueNode;
+
+/**
+ * struct  Queue - queue node
+ *
+ * @front: points to the front of the queue
+ * @rear: pointq to the rear of the queue
+ */
+typedef struct Queue
+{
+	QueueNode *front;
+	QueueNode *rear;
+} Queue;
 
 /* Printing helper function */
 void binary_tree_print(const binary_tree_t *);
@@ -48,4 +75,5 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node);
 binary_tree_t *binary_tree_uncle(binary_tree_t *node);
 binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
                                      const binary_tree_t *second);
+void binary_tree_levelorder(const binary_tree_t *tree, void (*func)(int));
 #endif
