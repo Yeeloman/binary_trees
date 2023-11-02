@@ -3,12 +3,13 @@
 #include <stdlib.h>
 
 /**
- *binary_tree_sibling - finds the sibling of a node
+ *binary_sibling - finds the sibling of a node
  *@node: a pointer to the node to find the sibling
  *Return: return a pointer to the sibling node or null
  */
 
-binary_tree_t *binary_tree_sibling(binary_tree_t *node) {
+binary_tree_t *binary_sibling(binary_tree_t *node)
+{
 	if (!node)
 		return (NULL);
 	if (node->parent && node->parent->left != node)
@@ -24,7 +25,8 @@ binary_tree_t *binary_tree_sibling(binary_tree_t *node) {
  *Return: uncle node or NULL
  */
 
-binary_tree_t *binary_tree_uncle(binary_tree_t *node) {
+binary_tree_t *binary_tree_uncle(binary_tree_t *node)
+{
 	binary_tree_t *uncle;
 
 	uncle = malloc(sizeof(struct binary_tree_s));
@@ -32,6 +34,6 @@ binary_tree_t *binary_tree_uncle(binary_tree_t *node) {
 		return (NULL);
 	if (!node)
 		return (NULL);
-	uncle = binary_tree_sibling(node->parent);
+	uncle = binary_sibling(node->parent);
 	return (uncle);
 }
